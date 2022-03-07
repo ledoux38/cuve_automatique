@@ -7,8 +7,8 @@ from pyfirmata import Arduino
 
 def board_arduino():
     # Use a breakpoint in the code line below to debug your script.
-    board = Arduino('/dev/tty.usbserial-A6008rIF')
-    board.digital[13].write(1)
+    board = Arduino('/dev/ttyACM0')
+    board.digital[13].write(0)
 
 
 # Press the green button in the gutter to run the script.
