@@ -1,13 +1,13 @@
-import time
+from pyfirmata import Arduino
 
-from pyfirmata import Arduino, util
+from interface.packages.GPIO import GPIO
 
-
-def blink(carte_target: Arduino, set_value: bool):
-    carte_target.digital[13].write(set_value)
+PORT: str = '/dev/ttyACM0'
+BAUDRATE: int = 921600
+TIMEOUT: int = 1
 
 
 if __name__ == '__main__':
-    carte = Arduino('/dev/ttyACM0')
-    print(carte.get_pin("d:13:o"))
-    # carte.digital[13].write(1)
+    gpio: GPIO = GPIO('d:13:o', 13)
+    carte = Arduino(PORT)
+    carte.digital[gpio.adress].write(1)
