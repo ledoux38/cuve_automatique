@@ -6,7 +6,7 @@ from interface.packages.GPIO import GPIO
 
 class TestElement(unittest.TestCase):
     def test_create_element_length(self):
-        i: Element = Element("cuve", [GPIO('d:13:o', 13), GPIO('d:12:o', 12), GPIO('d:11:o', 11)])
+        i: Element = Element("cuve", [GPIO('d:13:o'), GPIO('d:12:o'), GPIO('d:11:o')])
         self.assertEqual(len(i.get_gpio_all()), 3)
 
     def test_create_element(self):
