@@ -2,7 +2,7 @@ from interface.packages.GPIO import GPIO
 
 
 class Element:
-    def __init__(self, name: str, gpio: GPIO):
+    def __init__(self, name: str, gpio: [GPIO]):
         self.name = name
         self.gpio = gpio
 

@@ -2,7 +2,7 @@ import time
 
 import pyfirmata
 
-from interface.packages.Equipment import Element
+from interface.packages.Element import Element
 from interface.packages.GPIO import GPIO
 
 PORT: str = '/dev/ttyACM0'
