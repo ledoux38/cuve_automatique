@@ -10,7 +10,8 @@ BAUDRATE: int = 921600
 TIMEOUT: int = 1
 
 if __name__ == '__main__':
-    i: Element = Element("resistance_cuve", GPIO('d:13:o', 13))
+    list_gpio: list = [GPIO('d:13:o', 13), GPIO('d:12:o', 12), GPIO('d:11:o', 11)]
+    i: Element = Element("cuve", list_gpio)
 
     # HIGH = True  # Crée un état haut qui correspond à la led allumée
     # LOW = False  # Crée un état bas qui correspond à la led éteinte
