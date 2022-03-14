@@ -13,7 +13,7 @@ sudo chmod 777 /dev/ttyACM0
 
 import re
 
-regex = r"^((d|a):\d+:(o|i))$"
+regex = r"^((d|a):(\d+):(o|i))$"
 
 test_str = ("d:1:o\n"
 	"a:13:i\n")
