@@ -3,27 +3,25 @@ import re
 
 class GPIO:
     name: str
-    adress: int
+    address: int
 
     def __init__(self, name: str):
-        i = self.__control_name(name)
-        self.__type = i[0]
-        self.__address = i[1]
-        self.__int_out = i[2]
-        self.__name = name
+        values_gpio = self.__control_name(name)
+        self.__type: str = values_gpio[0]
+        self.__address: int = values_gpio[1]
+        self.__int_out: str = values_gpio[2]
 
-    def get_name(self):
-        return self.__name
+    def get_name(self) -> str:
+        return "{}:{}:{}".format(self.__type, str(self.__address), self.__int_out)
 
-    def get_adress(self):
+    def get_address(self) -> int:
         return self.__address
 
     def get_type(self):
         return self.__type
 
-    def get_int_out(self):
+    def get_io(self):
         return self.__int_out
-
 
     @staticmethod
     def __control_name(name: str) -> (str, int, str):
@@ -31,9 +29,9 @@ class GPIO:
 
         matches = re.finditer(regex, name, re.MULTILINE)
 
-        type_gpio: str
-        address_gpio: int
-        type_int_out: str
+        type_gpio: str = ''
+        address_gpio: int = 0
+        type_int_out: str = ''
 
         for matchNum, match in enumerate(matches, start=1):
 
@@ -49,4 +47,4 @@ class GPIO:
                 if groupNum == 4:
                     type_int_out = str(match.group(groupNum))
 
-        return tuple(type_gpio, address_gpio, type_int_out)
+        return type_gpio, address_gpio, type_int_out
