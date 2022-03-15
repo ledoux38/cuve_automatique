@@ -41,10 +41,11 @@ class GPIO:
                 if groupNum == 2:
                     type_gpio = str(match.group(groupNum))
 
-                if groupNum == 3:
+                elif groupNum == 3:
                     address_gpio = int(match.group(groupNum))
 
-                if groupNum == 4:
+                elif groupNum == 4:
                     type_int_out = str(match.group(groupNum))
-
+                else:
+                    Thr
         return type_gpio, address_gpio, type_int_out

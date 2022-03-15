@@ -18,6 +18,10 @@ class TestElement(unittest.TestCase):
         self.assertEqual(i.get_gpio_index(2).get_name(), 'd:11:o')
         self.assertEqual(i.get_gpio_index(2).get_address(), 11)
 
+    def test_regex_element(self):
+        i: Element = Element("cuve", [GPIO('h:13:o')])
+
+
 
 if __name__ == '__main__':
     unittest.main()
