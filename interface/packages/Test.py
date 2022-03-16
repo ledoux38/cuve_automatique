@@ -12,7 +12,7 @@ class TestElement(unittest.TestCase):
     def test_create_element(self):
         i: Element = Element("cuve", [GPIO('d:13:o'), GPIO('d:12:o'), GPIO('d:11:o')])
         self.assertEqual(i.get_gpio_index(0).get_name(), 'd:13:o')
-        self.assertEqual(i.get_gpio_index(0).get_address(), 13)
+        self.assertEqual(i.get_gpio_index(0).address, 13)
 
     def test_regex_element(self):
         with self.assertRaises(ValueError):
