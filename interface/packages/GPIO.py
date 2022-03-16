@@ -13,8 +13,11 @@ class GPIO:
         self.__address: int = int(values[1])
         self.__int_out: str = values[2]
 
-    def get_name(self) -> str:
+    def __str__(self) -> str:
         return "{}:{}:{}".format(self.__type, str(self.__address), self.__int_out)
+
+    def get_name(self) -> str:
+        return self.__str__()
 
     @property
     def address(self) -> int:
@@ -30,22 +33,22 @@ class GPIO:
 
     @address.setter
     def address(self, value: int) -> None:
-        self.__address = value
+        self.__address = self.__control(str(value), GPIO.REGEX_ADDRESS)
 
     @type.setter
     def type(self, value: str) -> None:
-        self.__type = value
+        self.__type = self.__control(value, GPIO.REGEX_TYPE)
 
     @io.setter
     def io(self, value: str) -> None:
-        self.__int_out = value
+        self.__int_out = self.__control(value, GPIO.REGEX_IO)
 
     @staticmethod
-    def __control(name: str, regex: str) -> str:
+    def __control(value: str, regex: str) -> str:
         regex = r"^{}$".format(regex)
 
-        is_ok = re.search(regex, name)
+        is_ok = re.search(regex, value)
         if is_ok is None:
             raise ValueError
 
-        return name
+        return value
