@@ -1,4 +1,4 @@
-from interface.packages.GPIO import GPIO
+from packages.GPIO import GPIO
 
 
 class Element:

@@ -2,15 +2,17 @@ import time
 
 import pyfirmata
 
-from interface.packages.Element import Element
-from interface.packages.GPIO import GPIO
+from packages.GPIO import GPIO
+from packages.Element import Element
+
+
 
 PORT: str = '/dev/ttyACM0'
 BAUDRATE: int = 921600
 TIMEOUT: int = 1
 
 if __name__ == '__main__':
-    list_gpio: list = [GPIO('d:13:o', 13), GPIO('d:12:o', 12), GPIO('d:11:o', 11)]
+    list_gpio: list = [GPIO('d:13:o'), GPIO('d:12:o'), GPIO('d:11:o')]
     i: Element = Element("cuve", list_gpio)
 
     # HIGH = True  # Crée un état haut qui correspond à la led allumée
