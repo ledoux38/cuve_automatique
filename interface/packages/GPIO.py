@@ -7,17 +7,22 @@ class GPIO:
     REGEX_IO: str = '(o|i)'
     REGEX_ALL: str = '({}:{}:{})'.format(REGEX_TYPE, REGEX_ADDRESS, REGEX_IO)
 
-    def __init__(self, value: str):
+    def __init__(self, value: str, label: str):
         values = self.__control(value, GPIO.REGEX_ALL).split(':')
         self.__type: str = values[0]
         self.__address: int = int(values[1])
         self.__int_out: str = values[2]
+        self.__label: str = label
 
     def __str__(self) -> str:
         return "{}:{}:{}".format(self.__type, str(self.__address), self.__int_out)
 
     def get_name(self) -> str:
         return self.__str__()
+
+    @property
+    def label(self) -> str:
+        return self.__label
 
     @property
     def address(self) -> int:
@@ -34,6 +39,10 @@ class GPIO:
     @address.setter
     def address(self, value: int) -> None:
         self.__address = self.__control(str(value), GPIO.REGEX_ADDRESS)
+
+    @label.setter
+    def label(self, value: str) -> None:
+        self.__label = value
 
     @type.setter
     def type(self, value: str) -> None:
