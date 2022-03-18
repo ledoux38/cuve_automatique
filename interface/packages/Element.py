@@ -1,37 +1,19 @@
-from pyfirmata import Arduino
+from pyfirmata import Arduino, Pin
 
-from interface.packages.GPIO import GPIO
+from interface.packages.IO import IO
 
 
 class Element(Arduino):
-    def __init__(self, name: str, gpio: [GPIO], *args, **kwargs):
+    def __init__(self, label: str, ios: [IO], test: bool, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.__name = name
-        self.__gpios: [GPIO] = gpio
+        self.__label = label
+        self.__io: dict = {}
+        for io in ios:
+            if test:
+                self.__io[io.label] = self.get_pin(io.io)
 
-    @property
-    def name(self):
-        return self.__name
+    def label(self):
+        return self.__label
 
-    @property
-    def gpios(self) -> [GPIO]:
-        return self.__gpios
-
-    def get_gpio_index(self, index: int) -> GPIO:
-        return self.__gpios[index]
-
-    def search_gpio(self, search_label: str) -> GPIO | None:
-        for x in self.__gpios:
-            if x.label == search_label:
-                return x
-        return None
-
-    def init_pin(self, pin: str) -> any:
-        return self.get_pin(self.search_gpio(pin).get_name())
-
-    def action(self, pin: str, value: bool):
-        self.get_pin(self.search_gpio(pin).get_name())
-
-    @name.setter
-    def name(self, value: str) -> None:
-        self.__name = value
+    def io(self, label: str) -> Pin:
+        return self.__io[label]
