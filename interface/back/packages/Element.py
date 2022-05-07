@@ -1,6 +1,6 @@
 from pyfirmata import Arduino, Pin
 
-from interface.packages.IO import IO
+from interface.back.packages.IO import IO
 
 
 class Element(Arduino):

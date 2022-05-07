@@ -1,7 +1,7 @@
 import unittest
 
-from interface.packages.Element import Element
-from interface.packages.IO import IO
+from interface.back.packages.Element import Element
+from interface.back.packages.IO import IO
 
 
 class TestElement(unittest.TestCase):

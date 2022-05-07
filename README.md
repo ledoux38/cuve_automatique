@@ -5,7 +5,15 @@
 # if problem witch raise SerialException(msg.errno, "could not open port {}: {}".format(self._port, msg))
 sudo chmod 777 /dev/ttyACM0
 
+Settings configuration
+script path: .../.../.../cuve_automatique/interface/back/venv/bin/flask
 
+parameters: run
+
+variables: FLASK_APP=flaskr;FLASK_ENV=development;FLASK_DEBUG=True;PYTHONUNBUFFERED=1
+
+Documentations
+https://flask.palletsprojects.com/en/1.1.x/tutorial/
 
 #COPY
 # coding=utf8
